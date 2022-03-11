@@ -71,9 +71,9 @@ def main():
             break
 
     while True:
-        if admin:
+        if admin:  # If the user is an admin
             choice = input("1. Add to Shopping Cart\n2. Remove from Shopping Cart\n3. \nEnter the number: ")
-        else:
+        else:  # If the user is a normal user
             choice = input("1. Add to Shopping Cart\n2. Remove Item from Shopping Cart\n3. ")
         
 
