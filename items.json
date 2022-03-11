@@ -1,0 +1,13 @@
+{
+    "Food":
+    {
+        "0001": ["Steak", "50"],
+        "0002": ["BBQ Chips mmmm", "2"],
+        "0003": ["Lettuce", "2"]
+    },
+    
+    "Electronics":
+    {
+        "0010": ["Cheap Laptop" ,"50"]
+    }
+}
