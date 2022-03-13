@@ -1,28 +1,31 @@
 from manage import Manage
-from user import User
+from user import login, register
 import time
 import json
 import os
 
 
-manage = Manage()
-user = User()
+# with open('items.json', 'r') as f:
+#     items = json.load(f)
 
-with open('items.json', 'r') as f:
-    items = json.load(f)
+# with open('shopping_cart.json', 'r') as f:
+#     shopping_cart = json.load(f)
+
 
 def clear():
-  os.system('cls' if os.name == 'nt' else 'clear')
-
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 
 def main():
-    # Item Category{ Item ID { [Name, price]
+    # Item Category{ Item ID: [Name, price]
     print("Welcome to Kimi's SuperMarket!")
-    # Login
-    flag, admin = False, False
+
+    flag, admin, name = False, False, ""
     while True:
+        # Login/Register
         choice_log = input("Register or Login (required): ")
+
+        # Login Part
         if choice_log[:1].lower() == "l":
             while True:
                 username = input("Enter Username: ")
@@ -31,10 +34,11 @@ def main():
                 password = input("Enter Password: ")
                 if not password:
                     break
-                check = user.login(username, password)
+                check = login(username, password)
                 if check == "Admin" or check == "Shopper":
                     if check == "Admin":
                         admin = True
+                    name = username
                     print("Login Success!")
                     time.sleep(2)
                     flag = True
@@ -42,19 +46,21 @@ def main():
                     break
                 else:
                     print("Username or password not valid.")
-                    time.sleep(3)
+                    time.sleep(2)
                     clear()
 
+        # Registering Part
         elif choice_log[:1].lower() == "r":
             while True:
                 username = input("Enter Username: ")
                 if not username:
                     break
-                password = input("Enter Pasword: ")
+                password = input("Enter Password: ")
                 if not password:
                     break
-                check = user.register(username, password)
+                check = register(username, password)
                 if check:
+                    name = username
                     print("Register Success!")
                     flag = True
                     time.sleep(2)
@@ -62,25 +68,48 @@ def main():
                     break
                 else:
                     print("Username or password not valid.")
-                    time.sleep(3)
+                    time.sleep(2)
                     clear()
+
         else:
             print("Not an option")
 
-        if flag == True:
+        if flag is True:
             break
 
     while True:
         if admin:  # If the user is an admin
-            choice = input("1. Add to Shopping Cart\n2. Remove from Shopping Cart\n3. \nEnter the number: ")
+            manage = Manage(name, admin=True)
+            choice = input("1. Add to Shopping Cart\n"
+                           "2. Remove from Shopping Cart\n"
+                           "3. Search for item\n"
+                           "4. Manage Items\n"
+                           "Enter the number: ")
+            if choice == "1":
+                ...
+            elif choice == "2":
+                ...
+            elif choice == "3":
+                ...
+            else:
+                print("That's not an option.")
         else:  # If the user is a normal user
-            choice = input("1. Add to Shopping Cart\n2. Remove Item from Shopping Cart\n3. ")
-        
+            manage = Manage(name, admin=False)
+            choice = input("1. Add to Shopping Cart\n"
+                           "2. Remove Item from Shopping Cart\n"
+                           "3. Search for item\n"
+                           "Enter the number: ")
+            if choice == "1":
+                ...
+            elif choice == "2":
+                ...
+            elif choice == "3":
+                ...
 
 
 if __name__ == "__main__":
     clear()
     # print(items)
-    # Item Category{ Item ID { [Name, price]
+    # Item Category{ Item Name { [Item ID, price]
     # print(items['Food']['0001'])
     main()

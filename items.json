@@ -1,13 +1,24 @@
 {
     "Food":
     {
-        "0001": ["Steak", "50"],
-        "0002": ["BBQ Chips mmmm", "2"],
-        "0003": ["Lettuce", "2"]
+        "Steak": ["00001", "25"],
+        "BBQ Chips": ["00002", "2"],
+        "Lettuce": ["00003", "2"],
+        "Lemon": ["00004", "2"],
+        "Spinach": ["00005", "1"],
+        "Fish": ["00006", "7"]
     },
     
     "Electronics":
     {
-        "0010": ["Cheap Laptop" ,"50"]
+        "Cheap Laptop": ["00020", "50"],
+        "Blue Yeti Microphone": ["00021", "100"],
+        "Expensive Laptop": ["00022", "500"],
+    },
+
+    "Desserts": {
+        "Vanilla Ice Cream": ["00040", "5"],
+        "Strawberry Ice Cream": ["00041", "5"],
+        "Chocolate Ice Cream": ["00042", "5"]
     }
 }
