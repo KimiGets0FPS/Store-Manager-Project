@@ -15,10 +15,12 @@ def login(username, password):
 
 def register(username, password):
     with open("users.json", 'r') as f:
-        file = json.load(f)
-        if username in file["Managers"].keys() or username in file["Shoppers"].keys():
+        users = json.load(f)
+        if username in users["Managers"].keys() or username in users["Shoppers"].keys():
             return False
-        file["Shoppers"][username] = [password]
-        with open("users.json", 'w') as fi:
-            json.dump(file, fi)
+        users["Shoppers"][username] = [password]
+        with open("users.json", 'w') as user:
+            json.dump(users, user, indent=4)
+        with open("shopping_cart.json", 'w') as sc:
+            json.dump({username: {}}, sc, indent=4)
         return True
