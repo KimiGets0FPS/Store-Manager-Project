@@ -12,6 +12,7 @@ def clear():
 
 # Trying to fix the json file if there aren't any shopping cart users
 # For some reason, it fixes itself AFTER a restart on the script
+# I can't fix this in any way because Python is just like this so ye :p
 with open('shopping_cart.json', 'r') as shopping_cart:
     shopping_cart = json.load(shopping_cart)
     if not shopping_cart:
@@ -27,7 +28,6 @@ with open('shopping_cart.json', 'r') as shopping_cart:
 
 
 def main():
-    # Item Category{ Item ID: [Name, price]
     print("Welcome to Kimi's SuperMarket!")
     time.sleep(1)
 
@@ -112,8 +112,10 @@ def main():
                                 managed = manage.add_shopping_cart(item)
                                 if managed:
                                     print(f"{item.title()} successfully added to shopping cart!")
-                                else:
+                                elif managed is None:
                                     print("There's no such item (very sensitive system)!")
+                                elif managed is False:
+                                    print("You already have this item in your shopping cart!")
                                 time.sleep(2)
                                 clear()
                                 break
@@ -173,9 +175,18 @@ def main():
                                 break
 
                     elif choice == "5":
-                        print("Not yet implemented!")
-                        time.sleep(2)
-                        clear()
+                        while True:
+                            choice = input("1. Add item\n2. Delete item\nChoice: ")
+                            if not choice:
+                                break
+                            if choice == "1" or choice == "2":
+                                manage.manage_item(choice)
+                                clear()
+                            else:
+                                print("Not an option!")
+                                time.sleep(2)
+                            time.sleep(2)
+                            clear()
 
                     else:
                         print("That's not an option.")

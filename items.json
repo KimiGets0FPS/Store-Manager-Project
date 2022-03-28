@@ -1,24 +1,44 @@
 {
     "Food":
-    {
-        "Steak": ["00001", "25"],
-        "BBQ Chips": ["00002", "2"],
-        "Lettuce": ["00003", "2"],
-        "Lemon": ["00004", "2"],
-        "Spinach": ["00005", "1"],
-        "Fish": ["00006", "7"]
-    },
-    
-    "Electronics":
-    {
-        "Cheap Laptop": ["00020", "50"],
-        "Blue Yeti Microphone": ["00021", "100"],
-        "Expensive Laptop": ["00022", "500"]
-    },
-
-    "Desserts": {
-        "Vanilla Ice Cream": ["00040", "5"],
-        "Strawberry Ice Cream": ["00041", "5"],
-        "Chocolate Ice Cream": ["00042", "5"]
-    }
+    [
+        {
+            "Name": "Steak",
+            "ID": 1,
+            "Price": 25
+        },
+        {
+            "Name": "BBQ Chips",
+            "ID": 2,
+            "Price": 2
+        }
+    ],
+    "Electronics": [
+        {
+            "Name": "Cheap Laptop",
+            "ID": 1,
+            "Price": 50
+        },
+        {
+            "Name": "Blue Yeti Microphone",
+            "ID": 2,
+            "Price": 100
+        }
+    ],
+    "Desserts": [
+        {
+            "Name": "Vanilla Ice Cream",
+            "ID": 1,
+            "Price": 5
+        },
+        {
+            "Name": "Strawberry Ice Cream",
+            "ID": 2,
+            "Price": 100
+        },
+        {
+            "Name": "Chocolate Ice Cream",
+            "ID": 3,
+            "Price": 5
+        }
+    ]
 }

@@ -21,6 +21,10 @@ def register(username, password):
         users["Shoppers"][username] = [password]
         with open("users.json", 'w') as user:
             json.dump(users, user, indent=4)
-        with open("shopping_cart.json", 'w') as sc:
-            json.dump({username: {}}, sc, indent=4)
+        with open("shopping_cart.json", 'r') as sc_1:
+            sc = json.load(sc_1)
+            sc['Shoppers'][username] = {}
+            # TODO: FIX
+            with open("shopping_cart.json", 'w') as sc_2:
+                json.dump(sc, sc_2, indent=4)
         return True
