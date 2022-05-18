@@ -1,6 +1,7 @@
 import os
 import time
 import json
+from termcolor import cprint
 
 from manage import Manage
 from user import login, register
@@ -28,7 +29,7 @@ with open('shopping_cart.json', 'r') as shopping_cart:
 
 
 def main():
-    print("Welcome to Kimi's SuperMarket!")
+    cprint("Welcome to Kimi's SuperMarket!", color='blue')
     time.sleep(1)
 
     flag, admin, name = False, False, ""
@@ -72,13 +73,13 @@ def main():
                     check = register(username, password)
                     if check:
                         name = username
-                        print("Register Success!")
+                        cprint("Register Success!", color='green')
                         flag = True
                         time.sleep(2)
                         clear()
                         break
                     else:
-                        print("Username or password not valid.")
+                        cprint("Username or password not valid.", color='red')
                         time.sleep(2)
                         clear()
 
@@ -111,9 +112,9 @@ def main():
                             if item:
                                 managed = manage.add_shopping_cart(item)
                                 if managed:
-                                    print(f"{item.title()} successfully added to shopping cart!")
+                                    cprint(f"{item.title()} successfully added to shopping cart!", color='green')
                                 elif managed is None:
-                                    print("There's no such item (very sensitive system)!")
+                                    cprint("There's no such item (very sensitive system)!", color='red')
                                 elif managed is False:
                                     print("You already have this item in your shopping cart!")
                                 time.sleep(2)
@@ -158,7 +159,7 @@ def main():
                             clear()
 
                         else:
-                            print("You don't have anything in your shopping cart!")
+                            cprint("You don't have anything in your shopping cart!", color='yellow')
                             time.sleep(2)
 
                     elif choice == "4":
@@ -170,7 +171,7 @@ def main():
                                     for i in range(len(managed)):
                                         print(f"{i+1}. {managed[i][0]}: ${managed[i][1]}")
                                 else:
-                                    print("No related results!")
+                                    cprint("No related results!", color='yellow')
                             else:
                                 break
 
@@ -183,13 +184,13 @@ def main():
                                 manage.manage_item(choice)
                                 clear()
                             else:
-                                print("Not an option!")
+                                cprint("Not an option!", color='yellow')
                                 time.sleep(2)
                             time.sleep(2)
                             clear()
 
                     else:
-                        print("That's not an option.")
+                        cprint("That's not an option.", color='red')
                 else:
                     return
 
@@ -255,7 +256,7 @@ def main():
                             clear()
 
                         else:
-                            print("You don't have anything in your shopping cart!")
+                            cprint("You don't have anything in your shopping cart!", color='yellow')
                             time.sleep(2)
 
                     elif choice == "4":
@@ -265,14 +266,14 @@ def main():
                                 managed = manage.search_item(item)
                                 if managed:
                                     for i in range(len(managed)):
-                                        print(f"{i+1}. {managed[i][0]}: ${managed[i][1]}")
+                                        cprint(f"{i+1}. {managed[i][0]}: ${managed[i][1]}", color='green')
                                 else:
-                                    print("No related results!")
+                                    cprint("No related results!", color='yellow')
                             else:
                                 break
 
                     else:
-                        print("That's not an option!")
+                        cprint("That's not an option!", color='red')
                 else:
                     return
                 clear()
