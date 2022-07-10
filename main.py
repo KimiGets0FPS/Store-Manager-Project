@@ -257,6 +257,8 @@ def main():
     switch = False
     while True:
         if admin and switch is False:  # If the user is an admin
+            # Pycharm is dumb
+            # noinspection PyUnboundLocalVariable
             admin = admin_panel(username, password)
             if admin == "switch_mode":
                 switch = True
